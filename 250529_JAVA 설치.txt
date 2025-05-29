@@ -1,0 +1,11 @@
+oracle JDK 다운로드
+
+https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+
+Windows x64 Installer <<- 다운로드
+
+ECLIPSE 다운로드
+
+https://www.eclipse.org/downloads/  <<-- 다운로드
+
+후 환경변수 설치.
