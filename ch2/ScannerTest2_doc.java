@@ -19,9 +19,32 @@ import util.UserService;
 // 이름 : {이름}
 // 이메일 : {이메일}
 // 패스워드 : {패스워드}
-// 회원 가입 완료되었습니다.ㅇ
+// 회원 가입 완료되었습니다.
 public class ScannerTest2_doc {
     public static void main(String[] args) {
+
+
+
+
+        // Scanner : 자바에서 사용자의 입력을 받는 방법.
+        // 자주 사용하는 메서드 : next(), nextLine(), nextInt(), nextDouble() 등
+        // next() : 공백 전까지 문자열 입력.
+            // 예시: "홍   길   동" -> next()로 가져온 문자열은 "홍"
+        // nextLine() : 한 줄 전체를 문자열로 입력
+            // 예시: "홍   길   동" -> 가져온 문자열은 "홍   길   동"
+        // nextInt() : 정수입력
+            // 예시 : "123" -> 가져온 값은 123
+        // nextBoolean() : boolean 입력.
+            // 예시 : "true" -> 가져온 값은 true
+        // hasNext() : 다음에 입력할 값 이 있는지 확인하는 메서드
+            // 예시 : 입력이 있다면 true, 없다면 false 반환
+
+        // 기본 문법 형식
+        // import : 다른 클래스를 가져오는 명령어
+        // java.util.Scanner : java 폴더 -> util 폴더 -> Scanner 클래스
+
+
+
 
         // 공용으로 사용을 할 스캐너를 정의.
         Scanner scanner = new Scanner(System.in); // Scanner 객체 생성, 표준 입력 스트림
