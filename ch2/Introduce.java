@@ -8,7 +8,9 @@ package ch2; //package 폴더
     // 특수문자는 _ / , / $ 사용가능.
     // 패키지명, 변수명, 함수명(메소드) 는 소문자로 시작함.
 
-public class Hello { // class : 변수, 상수, 함수 기능들의 묶음
+
+    
+public class Introduce { // class : 변수, 상수, 함수 기능들의 묶음
     // 정적인 메소드 하나 생성
     // static : 정적 자원(공유 자원)... 나중에 인스턴스 개념과 
         // 구분해서 따로 설명이 필요함.
@@ -40,6 +42,17 @@ public class Hello { // class : 변수, 상수, 함수 기능들의 묶음
 
     public static float float_div(int x,int y){
            return (float) x/y; // 정수를 입력받아서 계산시, 이것도 정수로 계산이되서
+    }
+
+    // 본인 소개하는 메소드
+    public static String Introduce(String name, String phone, String email){
+           String Introduce_myself = "저의 이름은 : " + name + "입니다. 제 전화번호는 : " + phone + ", 이메일은 : " + email + " 입니다";
+           return Introduce_myself;      
+    }
+
+    public static String Introduce2(String food, String hobby, String game){
+           String Introduce_myself = "제가좋아하는 음식은 : " +food+ "이고, 제 취미는 "+hobby+"입니다. 제가 좋아하는 게임은 : "+game+"입니다.";
+           return Introduce_myself;      
     }
 
     // public :: 접근 지정자. 누구나 다 접근이 됨(볼 수 있음.)
@@ -86,7 +99,7 @@ public class Hello { // class : 변수, 상수, 함수 기능들의 묶음
 //          문자열을 표기시에, 큰 따옴표""로 표기해서 사용한다.
 //          정적 메소드(함수)를 정의하고, 사용(호출)시 정의한 메소드로 돌아와서 재사용.
 //          클래스 명은 대문자로 시작, 패키지명과 메소드(함수)는 소문자로 시작.
-//          이름 작성시 사용 가능한 특수문자는 $ / _ / 두가지만 사용가능.
+//          이름 작성시 사용 가능한 특수문자는 $ / _ 달러, 언더바 두가지만 사용가능.
 
 
         int s; // 변수를 정의만 했고, 실제 할당은 안한상태
@@ -101,6 +114,7 @@ public class Hello { // class : 변수, 상수, 함수 기능들의 묶음
         // 저는 {이름}입니다.
         // 제 전화번호는 : {전화번호}
         // 저의 이메일주소는 : {이메일}
+        
         String na;
         String num;
         String mail;
@@ -110,6 +124,13 @@ public class Hello { // class : 변수, 상수, 함수 기능들의 묶음
         System.out.println("저의 이름은 : " +na +" 이고,");
         System.out.println("저의 전화번호는 : " +num +" 입니다.");
         System.out.println("저의 이메일주소는 : " +mail +" 입니다.");
+        //
+        String Introduce_info = Introduce("추교문","01085052594", "coko9437@gmail.com");
+        System.out.println(Introduce_info);
+        // 좋아하는 음식, 취미, 게임 등 알려주는 기능
+
+        String Introduce_quiz = Introduce2("소고기", "산책", "지뢰찾기");
+        System.out.println(Introduce_quiz);
     }
 }
 
