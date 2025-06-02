@@ -10,12 +10,19 @@ public class Exs_ch3 {
         
         //이중배열 선언 및 초기화
         int [][] matrix = {
-            {1, 2, 3}
-            {4, 5, 6}
-            {7, 8, 9}
+        // 0열 1열 2열
+            {1, 2, 3}, // 0행
+            {4, 5, 6}, // 1행
+            {7, 8, 9}  // 2행
         };
 
-
+        // 이중 배열 값 출력.
+        for (int i = 0; i < matrix.length; i++) { // 행 반복
+            for (int j = 0; j < matrix[i].length; j++) { // 열 반복
+                System.out.print("matrix[" + i + "] [" + j + "] :" + matrix[i][j] + "  "); // 각 요소 출력
+            }
+            System.out.println(); // 행이 끝나면 줄바꿈
+        }
     }
 
 
