@@ -12,14 +12,14 @@ public class OperConditionTestMain {
         // 만든 메서드, 확인 1
         OperConditionTest.oper1(); // 산술 연산자 테스트
             System.out.println("=======================================================");
-        System.out.println("퀴즈) 임의의 산술 연산자 사용 테스트");    
+            System.out.println("퀴즈) 임의의 산술 연산자 사용 테스트");    
             System.out.println("=======================================================");
         OperConditionTest.oper2();
+            System.out.println("테스트중");
 
-        System.out.println("테스트중");
-        Scanner scanner = new Scanner(System.in);
-        OperConditionTest.oper01(scanner);
-        scanner.close();
+        // Scanner scanner = new Scanner(System.in);
+        // OperConditionTest.oper01(scanner);
+        // scanner.close();
 
     }
     

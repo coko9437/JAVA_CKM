@@ -19,13 +19,7 @@ public class OperConditionTest {
         System.out.println("몫: b / a = " + (b / a)); // 나눗셈
         System.out.println("나머지: b % a = " + (b % a)); // 나머지
     }
-    
-    // 퀴즈 ,
-    // 1) 여기에 임의의 산술 연산하는 기능의 정적 메서드 만들기. 메서드명 : oper2()
-    // 2) 클래스명 : OperConditionTestMain, 여기에서 메서드명 : oper2( 1차 실행 확인
-    // 3) 클래스명 : MainClass, 여기에 4번 메뉴로 추가하기
-    // 4) MainClass에서 실행 확인하기
-    
+
     public static void oper2() {
         // 퀴즈2) 
         int a = 200;
@@ -38,21 +32,19 @@ public class OperConditionTest {
         System.out.println("몫: b / a % c = " + (b / a % c)); 
         System.out.println("나머지: b % a / c = " + (b % a / c)); 
     }
+    // // Scanner 사용한 산술 연산자 활용하기
+    // public static void oper01(Scanner scanner) {
+    //     System.out.println("덧셈을 할 첫번째 숫자를 입력해주세요.");
+    //     int x = scanner.nextInt();
+    //         // System.out.println("입력한 숫자는 : " +x + "입니다.");
+    //     System.out.println("덧셈을 할 첫번째 숫자를 입력해주세요.");
+    //     int y = scanner.nextInt();
+    //         // System.out.println("입력한 숫자는 : " +y + "입니다.");
+    //     System.out.println("두 숫자를 더한 값은 " +x+" + "+y+" = " + (x+y) +"입니다.");
+    // }
+    
 
-    // Scanner 사용한 산술 연산자 활용하기
-
-    public static void oper01(Scanner scanner) {
-        System.out.println("덧셈을 할 첫번째 숫자를 입력해주세요.");
-        int x = scanner.nextInt();
-            // System.out.println("입력한 숫자는 : " +x + "입니다.");
-        System.out.println("덧셈을 할 첫번째 숫자를 입력해주세요.");
-        int y = scanner.nextInt();
-            // System.out.println("입력한 숫자는 : " +y + "입니다.");
-        System.out.println("두 숫자를 더한 값은 " +x+" + "+y+" = " + (x+y) +"입니다.");
-
-    }
-
-    // 조건문 예시 메서드
+    // 조건문 예시 메소드
     public static void conditionExample() {
         int number = 0;
 
@@ -65,20 +57,20 @@ public class OperConditionTest {
         } else {
             System.out.println("0입니다.");
         }
-
-        System.out.println("조건문 스위치 예시 시작");
-        // switch 문 예시
-        switch (number) { // 스위치 조건으로 확인 후, break 문으로 빠져나옴
+        //-------------------------------------------
+            System.out.println("조건문 스위치 예시 시작");
+            // switch 문 예시
+            switch (number) { // 스위치 조건으로 확인 후, break 문으로 빠져나옴
             // 만약, break 문이 없으면, 다음 case로 계속 진행됨
-            case 0:
-                System.out.println("0입니다.");
-                break; // case 0에서 빠져나옴
-            case 1:
-                System.out.println("1입니다.");
-                break; // case 1에서 빠져나옴
-            default:
-                System.out.println("1이 아닌 다른 숫자입니다.");
-                break; // default에서 빠져나옴
+                case 0:
+                    System.out.println("0입니다.");
+                    break; // case 0에서 빠져나옴
+                case 1:
+                    System.out.println("1입니다.");
+                    break; // case 1에서 빠져나옴
+                default:
+                    System.out.println("1이 아닌 다른 숫자입니다.");
+                    break; // default에서 빠져나옴
         }
     }
     // if문 vs switch문 성능 차이

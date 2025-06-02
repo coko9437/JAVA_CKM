@@ -3,10 +3,12 @@ package user_mini_project;
 import java.util.Scanner;
 
 import ch2.OperConditionTest;
-import util.UserService;
-import util.UserService_doc;
+import ch3.Exs_ch3;
+import util.random.RandomUtil;
+import util.user.UserService;
+import util.user.UserService_doc;
 
-public class MainClass {
+public class MainClass_if_case {
     
     public static void main(String[] args) {
         //공용으로 사용할 스캐너 생성
@@ -18,7 +20,8 @@ public class MainClass {
         while (true) {
             System.out.println("======================================================");
         System.out.println("회원관리 시스템에 오신것을 환영합니다.");
-        System.out.println("0. 종료  1.회원가입  2.로그인   3.산술연산자  4.복합 산술연산자 5. 덧셈입력식");
+        System.out.println("0. 종료  1.회원가입  2.로그인   3.산술연산자  4.복합 산술연산자");
+        System.out.println("5. 로또 번호 생성기(배열없는버전)");
             System.out.println("======================================================");
         System.out.println("메뉴 번호를 선택해주세요. (0번 ~~ 5번)");
         // 사용자가 입력한 번호를 문자열 형태로 받기
@@ -31,26 +34,30 @@ public class MainClass {
             // 예시 ) choice.equals("1") // choice 변수에 저장된 문자열이 "1" 문자열 과 같은지 비교
 
             if (choice.equals("1")) {
-                // 회원 가입 기능 호출
+                // 회원 가입 기능
                 UserService.registerUser(scanner);
                 // UserService.registerUser(scanner);
             } 
             else if (choice.equals("2")) {
-                // 로그인 기능 호출
+                // 로그인 기능
                 UserService.loginUser(scanner);
             }
             else if (choice.equals("3")) {
-                // 산술연산자 테스트 기능 호출
+                // 산술연산자 기능
                 OperConditionTest.oper1();
             }
             else if (choice.equals("4")) {
-                // 퀴즈문제) 임의의 산술 연산 기능 호출
+                // 퀴즈) 기능 호출
                 OperConditionTest.oper2();
             } 
             else if (choice.equals("5")) {
-                // 퀴즈문제) 임의의 산술 연산 기능 호출
-                OperConditionTest.oper01(scanner);
-            } 
+                // 로또번호 생성기
+                RandomUtil.generateLottoNumbers();
+            }
+            else if (choice.equals("6")) {
+                // 문자개수
+                int count = Exs_ch3.ex3_2_quiz(scanner);
+            }  
             else if (choice.equals("0")) {
                 // 프로그램 종료
                 System.out.println("프로그램을 종료합니다. 감사합니다!");
@@ -61,8 +68,7 @@ public class MainClass {
                 // 잘못된 입력 처리
                 System.out.println("잘못된 입력입니다. 1, 2, 3 중에서 선택해주세요.");
             }
-            // 두번째, switch 형태의 조건문
-            // OperConditionTest.oper01
+            
         }
     }
 }

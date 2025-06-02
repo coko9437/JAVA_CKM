@@ -3,7 +3,7 @@ package ch2;
 
 import java.util.Scanner;
 
-import util.UserService;
+import util.user.UserService;
 
 // 새로운 ScannerTest2 클래스 만들기.
 // 회원 가입 해보기.

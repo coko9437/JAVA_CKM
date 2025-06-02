@@ -1,10 +1,11 @@
-package util;
+package util.date;
 
 public class DateUtilMain {
     public static void main(String[] args) {
         System.out.println("현재시간을 불러오는 기능 확인.");
 
         String currentTime = DateUtil.getCurrentDateTime();
+        
         System.err.println("현재시간 : "+ currentTime);
 
     }

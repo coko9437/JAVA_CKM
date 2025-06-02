@@ -1,6 +1,8 @@
-package util;
+package util.user;
 
 import java.util.Scanner;
+
+import util.date.DateUtil;
 
 public class UserService {
 
@@ -9,9 +11,9 @@ public class UserService {
         System.out.println("홈페이지 회원가입 창 입니다.");
         
         // Scanner scanner = new Scanner(System.in);
-        System.out.println("이름을 입력해 주세요 : " );
+        System.out.println("이름을 입력해 주세요>> " );
             String name = scanner.nextLine();
-        System.out.println("이메일을 입력해 주세요 : " );
+        System.out.println("이메일을 입력해 주세요>> " );
             String email = scanner.nextLine();
         
         String password;
@@ -87,6 +89,9 @@ public class UserService {
             }
             if (email.equals("admin@naver.com") && password.equals("1234")) {
                 System.out.println("로그인 성공");
+                String currentTime = DateUtil.getCurrentDateTime();
+            System.out.println("회원가입한 시각 : "+currentTime);
+            System.out.println("회원가입이 되었습니다. 이것은 단순 출력용입니다." );
             } else {
                 System.out.println("로그인 실패, 이메일 또는 패스워드를 확인해주세요.");
                 continue; // 다시 입력 받기
