@@ -75,4 +75,14 @@ public class Exs_ch3_Main {
         scanner.close();
 
     }
+
+    public static void addBook(Scanner scanner) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addBook'");
+    }
+
+    public static void viewBooks() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'viewBooks'");
+    }
 }
