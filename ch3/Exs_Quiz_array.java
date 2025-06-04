@@ -17,7 +17,7 @@ public class Exs_Quiz_array {
     static int bookCount = 0;
 
     // 도서 추가ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    public static void addBook(Scanner scanner) {
+    public static void addBooks(Scanner scanner) {
         if (bookCount < MAX_NUM) {
             System.out.print("책 제목을 입력하세요 >> ");
             String title = scanner.nextLine();
@@ -61,19 +61,19 @@ public class Exs_Quiz_array {
         }
         System.out.println("전산에 등록된 도서 목록:");
         for (int i = 0; i < bookCount; i++) {
-            System.out.println("인덱스 번호 : " + i + "/ 책 제목: " + titles[i] + ", 책의 저자 : " + authors[i] + ", 출판사명 : "
+            System.out.println("인덱스 번호 (" + i + ") | 책 제목: " + titles[i] + ", 책의 저자 : " + authors[i] + ", 출판사명 : "
              + publishers[i] + ", 책의 가격 :" + prices[i] + "원,  재고 수량 :" + stocks[i] + "개, 등록된 날짜 : " + registrationDates[i]);
         }
 
 
     }
 
-    // 회원 수정 메서드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    // 회원 전체 목록에서, 해당 회원의 인덱스를 번호를 이용해서, 회원 정보를 수정해보기.
-    public static void updateBook(Scanner scanner) {
+    // 도서정보 수정 메서드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // 인덱스를 번호를 이용해서 수정해보기.
+    public static void updateBooks(Scanner scanner) {
         System.out.println("수정할 도서의 인덱스를 입력하세요 (0 ~ " + (bookCount - 1) + "): ");
-        int index = scanner.nextInt(); // 수정할 회원의 인덱스 입력
-        scanner.nextLine(); // 개행 문자 제거
+        int index = scanner.nextInt(); // 수정할 회원의 인덱스 입력 / 개행문자(Enter) 남아있음. 
+        scanner.nextLine(); // 개행 문자 제거 (이후에 문자열을 입력받을 때 문제가 없도록)
         if (index < 0 || index >= bookCount) {
             System.out.println("잘못된 인덱스입니다.");
             return;
@@ -109,7 +109,7 @@ public class Exs_Quiz_array {
 
     // 도서 삭제 메소드
     // 도서 정보의 인덱스 번호를 입력시, 삭제하는 로직.
-    public static void deleteBook(Scanner scanner) {
+    public static void deleteBooks(Scanner scanner) {
         System.out.println("삭제할 회원의 인덱스를 입력하세요 (0 ~ " + (bookCount - 1) + "): ");
         int index = scanner.nextInt(); // 삭제할 도서의의 인덱스 입력
         scanner.nextLine(); // 개행 문자 제거
@@ -160,6 +160,26 @@ public class Exs_Quiz_array {
                 break;
             }
         }
-        System.out.println("도서정보(더미)를 7개 추가하였습니다다.");
+        System.out.println("도서정보(더미)를 7개 추가하였습니다.");
+    }
+    
+    // 도서 검색하는 기능
+    public static void searchBooks(Scanner scanner) {
+
+        System.out.println("검색할 도서를 입력하세요. (도서명, 저자 로 검색하실 수 있습니다.)");
+        
+        String search = scanner.nextLine();
+            boolean found = false; // 기본적으로 false로 선언
+        for (int i =0; i<bookCount; i++) { //bookCount-1 만큼 도서를 검색
+            if(titles[i].toLowerCase().contains(search.toLowerCase())|| authors[i].toLowerCase().contains(search.toLowerCase())) {
+                System.out.println("검색한 도서 결과 : " +(i+1) + "." + titles[i] + ", " +authors[i]+ ", " +publishers[i]+ ", " +prices[i]+ ", " +stocks[i]+ ", 등록날짜 : "+registrationDates[i] );
+                // 검색 전 해당 도서의 제목과 저자를 전부 소문자로 변경 후 소문자로만 검색하여 대소문자 구분함.
+                // .contains() : 문자열을 검색하는 메소드, 기본 String 타입. // 대,소문자 구분함.
+            found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("해당 도서가 없습니다. ");
+        }
     }
 }
