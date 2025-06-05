@@ -45,6 +45,7 @@ public class MainClass_switch_case {
                 case "5":
                     RandomUtil.generateLottoNumbers();
                     break;
+                    
                 case "6":
                     int count = Exs_ch3.ex3_2_quiz(scanner);
                     System.out.println("입력한 문자 개수: " + count);

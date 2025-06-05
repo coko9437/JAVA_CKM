@@ -44,9 +44,9 @@ public class UserService {
                 System.out.println("이름 : "+name);
                 System.out.println("이메일 : "+email);
                 System.out.println("패스워드 : "+password);
-            String currentTime = DateUtil.getCurrentDateTime();
+            String regdate = DateUtil.getCurrentDateTime();
             
-                    System.out.println(currentTime +" 시간부로 회원 가입이 완료되었습니다.");
+                    System.out.println(regdate +" 시간부로 회원 가입이 완료되었습니다.");
         
         
         
