@@ -93,7 +93,7 @@ public class Car {
         if (index < 0 || index >= carCount) {
             System.out.println("인덱스를 다시 입력하세요.");
             return;
-        }
+        }// 유효성체크
 
         Car_Model car_model = Car_Models[index];
         System.out.println("삭제할 회원 정보 :>> ");

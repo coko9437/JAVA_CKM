@@ -22,7 +22,7 @@ public class Coffee_Main {
 
     // NULL값을 없애는 방법?
         // 1. 가장 확실한 해결책은 모든 필드를 초기화하는 생성자를 사용하는 것
-            // ==>Coffee Cof3 = new Coffee("콜드브루", "2,700원", "300ml");
+            // ==> Coffee Cof3 = new Coffee("콜드브루", "2,700원", "300ml");
         // 2. 메소드 호출 코드에서 null을 초기화
             // public void show_info() {
         // System.out.println("메뉴는 ? >> " + (this.menu != null ? this.menu : "정보 없음"));
