@@ -24,12 +24,18 @@ public class MainClass_Ex1 {
             if (animal_Ex1 instanceof Dog_Ex1) {
                 Dog_Ex1 dog = (Dog_Ex1) animal_Ex1;
                 dog.sound();
+
             } else if (animal_Ex1 instanceof Cat_Ex1) {
                 Cat_Ex1 cat = (Cat_Ex1) animal_Ex1;
-                cat.sound();
+                cat.sound(); // 부모클래스(추상클래스)의 메소드 재정의
+                cat.eat(); // 부모클래스 기본기능 사용
+                cat.move(); // 인터페이스.. 기능 구현
+                cat.out(); // 인터페이스.. 기능 구현
+
             } else if (animal_Ex1 instanceof Monkey_Ex1) {
                 Monkey_Ex1 monkey = (Monkey_Ex1) animal_Ex1;
                 monkey.sound();
+
             } else if (animal_Ex1 instanceof Fish_Ex1) {
                 Fish_Ex1 fish = (Fish_Ex1) animal_Ex1;
                 fish.sound();

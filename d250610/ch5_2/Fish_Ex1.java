@@ -6,5 +6,6 @@ public class Fish_Ex1 extends Animal_Ex1{
     void sound() {
        System.out.println("물고기는 소리가 안나요.");
     }
-    
+    // 추상 클래스를 상속받은 자식 클래스는
+    //  의무적으로 반드시 추상메소드를 구현해야함.
 }

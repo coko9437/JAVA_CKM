@@ -7,6 +7,7 @@ package d250610.ch5_2;
 // 추상 클래스를 상속받은 자식 클래스는
     //  의무적으로 반드시 추상메소드를 구현해야함.
 public abstract class Animal_Ex1 {
+    
     abstract void sound(); // <-- 추상 메소드
 
     void eat() { // <-- 일반 메소드
