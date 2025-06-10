@@ -11,8 +11,9 @@ public class Exs_Main {
         String name = scanner.nextLine();
         System.out.println("좋아하는 월을 입력하세요 (1~12):");
         String month = scanner.nextLine();
+
         int monthInt = Integer.parseInt(month);
-        // 스캐너 이용해서 받아서 입력.d
+        // 스캐너 이용해서 받아서 입력.
         String result_exMini_quiz1 = Exs_doc.exMini_quiz1(name, monthInt);
         System.out.println(result_exMini_quiz1);
         scanner.close();
