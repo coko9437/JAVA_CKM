@@ -2,8 +2,6 @@ package ch3;
 
 import java.util.Scanner;
 
-import ch3.Exs_ch3_Main;
-
 public class Exs_Quiz_array_Main {
     public static void main(String[] args) {
 

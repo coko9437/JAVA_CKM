@@ -32,7 +32,7 @@ public class Basic_Ex1 {
 
     // 예시 , 박싱
     // int num = 10 ;
-    // 박싱 , 기본형 -> 참조형(클래스타입)
+    // 박싱: 참조형(클래스타입) <- 기본형
     // Integer intObj = Integer.valueOf(10); // 수동으로 변경.
     // Integer intObj2 = num; // 자동으로 형변환,
 

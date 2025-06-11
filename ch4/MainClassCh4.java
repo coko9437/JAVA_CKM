@@ -64,15 +64,6 @@ public class MainClassCh4 {
         phones[3] = phone4; // 3번째 요소에 phone4 객체 할당
         phones[4] = phone5; // 4번째 요소에 phone5 객체 할당
 
-        // 직접 할당.
-        Phone[] phones2 = {
-                phone1,
-                phone2,
-                phone3,
-                phone4,
-                phone5
-        };
-
         // 그래서, 각 인스턴스 주소는 , 독립적이다, 다 다른 메모리 위치 주소에 저장이된다.
         // 그러면, 그 위치 주소를 직접확인. 자바스크립트, 힘들고, '
         // 자바는 기능을 지원 해줌.
@@ -80,8 +71,6 @@ public class MainClassCh4 {
         System.out.println("phone1 주소: " + System.identityHashCode(phone1));
         System.out.println("phone2 주소: " + System.identityHashCode(phone2));
 
-        // 문자열 타입을 요소로 가지는 배열.
-        String[] carModels = { "suv", "k5세단", "아반떼", "소나타", "그랜저" };
         // 정수 타입을 요소로 가지는 배열.
         int[] carPrices = { 4000, 3000, 2500, 3500, 5000 }; // 단위 : 만원
 

@@ -2,8 +2,6 @@ package ch3;
 
 import java.util.Scanner;
 
-import ch2.Exs;
-
 public class Exs_ch3_Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

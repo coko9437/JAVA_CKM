@@ -6,7 +6,6 @@ import ch2.OperConditionTest;
 import ch3.Exs_ch3;
 import util.random.RandomUtil;
 import util.user.UserService;
-import util.user.UserService_doc;
 
 public class MainClass_if_case {
     

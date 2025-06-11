@@ -153,8 +153,6 @@ public class Exs_ch3 {
 
     // 기본 배열생성, 조회, 반복문 출력, 배열타입 으로 리턴
     public static void ex3_8() {
-        int[] numbers = new int[5]; // 기본 1차원 배열 생성
-
         int[] numbers2 = { 1, 2, 3, 4, 5 }; // 배열 선언과 동시에 값 할당
 
         // numbers2의 인덱스 3을 조회하고싶다면?

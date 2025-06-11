@@ -1,7 +1,5 @@
 package d250610.ch6;
 
-import java.util.ArrayList;
-
 public class WrapperMain_Ex1 {
     public static void main(String[] args) {
 

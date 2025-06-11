@@ -2,7 +2,7 @@ package d250610.ch5_2;
 
 public class MainClass_Ex1 {
     public static void main(String[] args) {
-        // Dog_Ex1 dog_Ex1 = new Dog_Ex1();
+        Dog_Ex1 dog_Ex1 = new Dog_Ex1();
         // dog_Ex1.sound();
         // dog_Ex1.eat(); // 부모가 가지고 있는 메소드
             System.out.println("==============");
@@ -18,7 +18,9 @@ public class MainClass_Ex1 {
         
         // 각각의 4가지 종류의 동물들을 배열타입으로?
             // 만드는 타입은 부모타입으로.
-        Animal_Ex1[] animals = {ani, ani2, ani3, ani4};
+        // 배열을 정의하고 타입을 지정할 때, 부모타입으로 받는다고 가정.
+            // 그 배열엔 자식클래스는 올수 있을까? 정답은 올 수 있다.
+        Animal_Ex1[] animals = {ani, ani2, ani3, ani4, dog_Ex1};
 
         for (Animal_Ex1 animal_Ex1 : animals) {
             if (animal_Ex1 instanceof Dog_Ex1) {

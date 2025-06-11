@@ -1,7 +1,5 @@
 package ch2;
 
-import java.util.Scanner;
-
 public class Exs_doc {
    
     // 퀴즈) 사용자 이름 입력을 받고, 좋아하는 월 입력받고,
@@ -87,15 +85,10 @@ public class Exs_doc {
     public static String getTypeExam(){
         
         
-        // 왼쪽 : 받는 타입 임.
-        long num1 = 100L; // long 타입변수 : 8바이트 
-        long num2 = 100;    // 여기서 100 : int타입임(4바이트)
-        // -> int타입 100을 long 타입으로 형변환 ==> 자동 형변환임.
+        
 
         // 작은쪽에서 --> 큰쪽으로 형변환 시 문제가 없음.
         
-        // 반대로 큰쪽(타입)에서 작은쪽(타입)으로 형 변환 시 문제 생김.
-        byte num3 = 127; // 128은 byte타입 범위를 넘어감
         int num4 = 128;
 
         // 강제로 형변환 int num4 , -> 강제로 byte 타입으로 변환

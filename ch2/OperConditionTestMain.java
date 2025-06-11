@@ -1,9 +1,5 @@
 package ch2;
 
-import java.util.Scanner;
-
-import ch2.OperConditionTest;
-
 public class OperConditionTestMain {
 //OperConditionTest 에서 만든 메서드를 1차적으로 확인하는 클래스
     public static void main(String[] args) {

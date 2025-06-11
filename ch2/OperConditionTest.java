@@ -1,7 +1,5 @@
 package ch2;
 
-import java.util.Scanner;
-
 public class OperConditionTest {
     // int x,y = 0;
     

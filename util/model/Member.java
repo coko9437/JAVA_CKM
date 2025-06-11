@@ -38,4 +38,8 @@ public class Member {
     public String getEmail() {
         return email;
     }
+    public void set(int index, Member member) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'set'");
+    }
 }
