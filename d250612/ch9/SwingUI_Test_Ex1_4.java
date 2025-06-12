@@ -1,4 +1,4 @@
-package d250612;
+package d250612.ch9;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

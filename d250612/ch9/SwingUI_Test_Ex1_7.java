@@ -1,4 +1,4 @@
-package d250612;
+package d250612.ch9;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
