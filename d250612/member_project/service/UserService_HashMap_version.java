@@ -1,11 +1,11 @@
-package d250611.service;
+package d250612.member_project.service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import d250611.model.Member;
-import d250611.util.DateUtil;
+import d250611.member_project.model.Member;
+import d250611.member_project.util.DateUtil;
 
 
 public class UserService_HashMap_version {
@@ -175,9 +175,9 @@ public class UserService_HashMap_version {
             if (userCount < MAX_USERS) {
                 
                 Member dummyMember = new Member(
-                        "더미회원" + (i + 1),
-                        "password" + (i + 1),
-                        "dummy" + (i + 1) + "@example.com",
+                        " 더미회원 " + (i + 1),
+                        " password " + (i + 1),
+                        " dummy " + (i + 1) + "@example.com",
                         DateUtil.getCurrentDateTime());
 // [변경6]
                 // 전
@@ -201,7 +201,7 @@ public class UserService_HashMap_version {
 
     // 검색 기능
     public static void searchUser(Scanner scanner) {
-        System.out.println("검색할 회원의 이름 또는 이메일을 입력하세요: ");
+        System.out.println("검색할 회원의 이름 또는 이메일을 입력하세요 : ");
         String searchQuery = scanner.nextLine();
         
         boolean found = false;
@@ -225,8 +225,7 @@ public class UserService_HashMap_version {
             // }
                 // --> 변경) HashMap 7, ArrayList -> HashMap형태로 변경
             // 맵에서 해당 키에 해당하는 값의 멤버를 가져오고, 메일과 이름으로 검색해보기.
-            if(members.get(i).getName().contains(searchQuery) 
-                || members.get(i).getEmail().contains(searchQuery)) {
+            if(members.get(i).getName().contains(searchQuery) || members.get(i).getEmail().contains(searchQuery)) {
                     members.get(i).showInfo();
                     found = true;
                 }

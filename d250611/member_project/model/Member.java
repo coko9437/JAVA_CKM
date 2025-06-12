@@ -1,4 +1,4 @@
-package d250611.model;
+package d250611.member_project.model;
 
 public class Member {
     //멤버변수
@@ -17,10 +17,10 @@ public class Member {
     }
         //메소드
         public void showInfo() {
-        System.out.println("회원 이름"+this.name);
-        System.out.println("회원 이메일"+this.email);
-        System.out.println("회원 패스워드"+this.password);
-        System.out.println("회원 등록일"+this.regDate);
+        System.out.println("회원 이름 :"+this.name);
+        System.out.println("회원 이메일 : "+this.email);
+        System.out.println("회원 패스워드 : "+this.password);
+        System.out.println("회원 등록일 : "+this.regDate);
         }
 
         // 이름조회기능 : 게터
