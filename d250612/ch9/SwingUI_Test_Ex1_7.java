@@ -20,13 +20,16 @@ public class SwingUI_Test_Ex1_7 {
                                         // 10줄, 30 가로크기
         JButton saveButton = new JButton("저장하기");
         
+        
         // 버튼 이벤트 처리
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(textArea.getText());
             }
-            
+        // ㄴ => 람다식클래스로는 : 
+            // saveButton.addActionListener(e -> System.out.println(textArea.getText()));
         });
+
     JPanel panel = new JPanel();
     // 패널에 텍스트 영역 추가시, 범위를 넘어가면 스크롤이 생기는 기능
     panel.add(new JScrollPane(textArea)); 

@@ -12,6 +12,9 @@ import javax.swing.JPanel;
     // 정렬을 어떻게 하나?: /// 웹 : FLEX 자동으로 나란히 배치 /// grid : 행x열 (테이블구조)
 // 종류 : FlowLayout(웹의 flex와 비슷함), BoarderLayout(동,서,남,북,중앙), GridLayout(웹의 grid와 비슷)
 
+// JFrame => 기본 배치관리자: BoarderLayout  (Default)
+// JPanel => 기본 배치관리자: FlowLayout  (Default)
+
 // 1) 패널만들기, 2) 컴포넌트 추가(버튼추가), 3) 패널->프레임(윈도우창)에 붙이기작업.
 // JPanel panel = new JPanel();
 //  panel.setLayout(배치관리자 인스턴스 생성)
@@ -22,6 +25,7 @@ import javax.swing.JPanel;
 //  frame.add(panel);
 //  frame.setSize(300,200);
 //  frame.setVisible(true);
+
 
 // 자주 사용하는 옵션
 //  setLayout(LayoutManager manager)... ex) new FlowLayout(), new BoarderLayout(), new GridLayout()
