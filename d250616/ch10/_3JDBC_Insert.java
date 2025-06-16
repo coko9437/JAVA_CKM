@@ -52,12 +52,18 @@ public class _3JDBC_Insert {
             "VALUES(MEMBER501_SEQ.NEXTVAL, ?, ?, ?, ?)";
         System.out.println("4. SQL 문 작성 완료");
 
+            // ID는 MEMBER501_SEQ.NEXTVAL이라는 시퀀스의 다음 값을 넣음.
+            // ? : "와일드카드", 이는 나중에 PreparedStatement의 setString() 또는
+                    //  setXXX()메서드로 값을 채워 넣겠다는 의미입니다.
+
 // 5. PreparedStatement 생성
     // 요청할 SQL 문 을 데이터베이스에 전송할 때 사용하는 기능(API)
     // 예시) PreparedStatement pstmt = conn.prepareStatement(query)
         pstmt = conn.prepareStatement(query);
             // 쓰기전 추가할 데이터를 해당 와일드카드(?)에 해당하는 데이터를 임시로
             // -> 하드코딩으로 넣고있고, 화면에서 데이터를 사용자로부터 받아서 추가 할 예정.
+                // PreparedStatement : 쿼리를 한 번 준비해두고, 나중에 값을 변경해서 넣기에 유용
+
 
             // 직접 ID 수동으로 넣을경우
             // pstmt.setInt(1, 100);
@@ -94,7 +100,12 @@ public class _3JDBC_Insert {
             // int result = pstmt.executeUpdate(query);
             System.out.println("6-2. 전송 후 완료");
                 System.out.println(result + "개 의 데이터가 저장됨.");
+            // 성공적으로 한 줄이 삽입됐다면:
+            // result는 1이에요.
 
+            // 만약 조건이나 오류 때문에 한 줄도 변경하지 않았다면:
+            // result는 0이에요.
+            
         
         } catch (Exception e) {
             // TODO: handle exception

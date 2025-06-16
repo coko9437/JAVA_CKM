@@ -47,6 +47,17 @@ import java.sql.ResultSet;
 
 
 
+// Connection : 데이터베이스와 연결되어 세션이나 연결 자체를
+        //  나타내는 인터페이스.
+
+// PreparedStatement : SQL 쿼리를 미리 준비해서, 파라메트를 변경해서
+        //  반복 실행할 수 있도록 한 인터페이스.
+
+// ResultSet : PreparedStatement나 Statement의 executeQuery() 
+        // 실행 후 가져온 데이터를 한 줄 한 줄 접근할 수 있도록 한 인터페이스.
+
+
+
 public class _2JDBC_Select {
     public static void main(String[] args) {
 // 1. 디비 서버에 접근을 위한 준비물
@@ -62,7 +73,7 @@ public class _2JDBC_Select {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        // 파일 입출력, 네트쿼읔 통신 이용해서 접근시 try_ 구문 이용
+        // 파일 입출력, 네트워크 통신 이용해서 접근시 try_ 구문 이용
         try {
 
 // 2. 드라이버 로딩, ojdbc8_g.jar 압출파일에서, 필요한경로를 찾아감.
@@ -75,6 +86,11 @@ public class _2JDBC_Select {
             // java.sql 패키지에서 Connection 클래스 기능을 이용해서 접근한다.
             // 예시) Connection conn = DriverManager.getConnection(url, user, password)
             conn = DriverManager.getConnection(url, user, password);
+                // DriverManager는 JDBC 드라이버를 통해 데이터베이스 연결을 만들어내는 클래스.
+
+                // getConnection()에 데이터베이스 URL, 계정, 비밀번호를 넘깁니다.
+
+                // 연결이 성공하면 해당 데이터베이스 세션과 연결되어 있는 Connection 인스턴스를 반환합니다.
 
 
 // 4. SQL문 작성
@@ -87,6 +103,10 @@ public class _2JDBC_Select {
             // 요청할 SQL 문 을 데이터베이스에 전송할 때 사용하는 기능(API)
             // 예시) PreparedStatement pstmt = conn.prepareStatement(query)
             pstmt = conn.prepareStatement(query);
+                // 문자열로 저장한 query를 미리 준비(컴파일)해서 
+                    // PreparedStatement 객체(pstmt)를 만듬.
+                 
+
 
 // 6. SQL문 전송 및 결과값 얻기... 
             // 1)조회버전 : executeQuery
@@ -100,6 +120,10 @@ public class _2JDBC_Select {
                     //  }
 
             rs = pstmt.executeQuery(query); // 실제 디비에 연결해서 실행결과를 받아옴.
+                // executeQuery()는 PreparedStatement(pstmt) 에 미리 
+                    // 준비되어 있는 쿼리를 실행
+                    // 이 결과로 ResultSet(rs)이라는 형태의 데이터를 받음.
+                    
                 while(rs.next()) {
                     int id = rs.getInt("id");
                     String name = rs.getString("name");

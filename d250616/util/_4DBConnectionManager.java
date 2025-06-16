@@ -34,6 +34,8 @@ public class _4DBConnectionManager {
     public static Connection getConnection() throws SQLException{
         return DriverManager.getConnection(url, user, password);
     }
+    // getConnection() : 메서드는 데이터베이스 연결을 만들어서 넘김.
+
     // 4) 자원해제
     public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
         try {

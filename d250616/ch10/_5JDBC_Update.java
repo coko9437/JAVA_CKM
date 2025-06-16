@@ -68,6 +68,7 @@ public class _5JDBC_Update {
             // 변경 후
             String query = "UPDATE MEMBER501 SET NAME = ?, EMAIL = ?, " +
                     "PASSWORD = ?, REG_DATE = ? WHERE ID = ?";
+                //  특정 조건 (WHERE ID = ?)에 해당되는 한 줄의 데이터를 변경하게 됩니다.
         System.out.println("4. SQL 문 작성 완료");
 
 // 5. PreparedStatement 생성
@@ -98,7 +99,7 @@ public class _5JDBC_Update {
             pstmt.setString(2, "1234 수정");
             pstmt.setString(3, "lsy@naver.com 수정");
             pstmt.setString(4, DateUtil.getCurrentDateTime());
-            pstmt.setInt(5, 1); 
+            pstmt.setInt(5, 1); //ID가 1 인 사람의 정보만 변경
             System.out.println("5. PreparedStatement 생성 완료");
 
 
@@ -120,6 +121,13 @@ public class _5JDBC_Update {
             // int result = pstmt.executeUpdate(query);
             System.out.println("6-2. 전송 후 완료");
                 System.out.println(result + "개 의 데이터가 저장됨.");
+            
+            // executeUpdate()는 변경된 row 개수를 반환합니다.
+
+            // 만약 해당 조건(ID)가 1개 존재해서 한 줄 변경됐다면 result는 1이에요.
+
+            // 조건과 일치되는 row가 없으면 result는 0이에요.
+
 
         
         } catch (Exception e) {
