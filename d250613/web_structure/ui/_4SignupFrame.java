@@ -196,7 +196,7 @@ public class _4SignupFrame extends JFrame{
     //     Exception e) {
     //         // 오류 발생시 간단히 알림 창띄우기.
     //         JOptionPane.showMessageDialog(this, "파일 읽기 오류 : " + e.getMessage());
-    //         // TODO: handle exception
+    //         
     //     }
     // }
     

@@ -27,6 +27,7 @@ public class Phone {
 
     // 주의사항, 매개변수가 있는 생성자를 생성시, 기본 생성자는 더이상 지원을 안해줌.
     // 그래서, 만약 기본 생성자를 따로 필요하다면, 따로 만들어야 함.
+    
     // 3개 형태의 생성자
     public Phone(String model, String price, String company) { // 매개변수 매번 다름, 동적인값
         this.model = model; // this.model, 위에 정의한 멤버 변수, model: 동적인 값.

@@ -99,7 +99,7 @@ public class _5MemberService {
             // JOptionPane.showMessageDialog(this, "파일 생성 오류 : " + e.getMessage());
             // System.out.println("다른 방법으로 알림등 알려줄 예정");
             System.out.println(e.getMessage());
-            // TODO: handle exception
+            
         }
     }
 
