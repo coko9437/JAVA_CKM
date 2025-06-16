@@ -11,6 +11,8 @@ public class Member_copy {
 // CSV 쓰는이유
 // CSV는 아주 단순하게 한 줄 한 줄 저장되어 있어 
     // 다양한 어플, 엑셀, 데이터베이스에서 쉽게 인식할 수 있습니다.
+// 별도의 파서나 라이브러리 필요없이 String.split(",") 만으로 풀 수 있습니다.
+// 그냥 메모장이나 엑셀로 바로 열어볼 수 있습니다.
     public String toCsv() {
         return name + "," + password + ","+ email + "," + regDate;
     }

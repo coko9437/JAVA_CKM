@@ -24,6 +24,9 @@ public class _3MainFrame extends JFrame{
     // 버튼에 이벤트작업...클릭시 회원가입 화면으로 이동
     signUpBtn.addActionListener(e -> {
         new _4SignupFrame(); // 회원가입 화면으로 이동 -> 그 클래스의 생성자를 호출하는 형식.
+
+        // new _4copy();
+
         dispose(); //현재창 닫기.
     });
 

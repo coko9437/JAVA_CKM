@@ -14,6 +14,8 @@ import javax.swing.*;
 
 import d250613.member_project.model.Member;
 import d250613.member_project.util.DateUtil;
+import d250613.web_structure.ui._4SignupFrame;
+
 
 public class _5MemberService {
     // 파일 불러오는 경로를 전역으로 설정
@@ -23,7 +25,14 @@ public class _5MemberService {
     
     // 없는 부분 받아서 임시로 사용하기.
     private DefaultTableModel tableModel;
+    
     private JTextField searchField;
+
+    public void setSignupFrame(_4SignupFrame signupFrame) {
+        this.signupFrame = signupFrame;
+    }
+
+    private _4SignupFrame signupFrame;
 
     public void setTableModel(DefaultTableModel tableModel) {
         this.tableModel = tableModel;
@@ -59,7 +68,8 @@ public class _5MemberService {
                 // 기존 클래스에서는, JFrame 상속을 받아서, 기능을 사용할 수있지만, 지금은 분리가 되어서,
                 // 따로 구현이 하거나, 잠시 주석.
                 // JOptionPane.showMessageDialog(this, "파일 생성 오류 : " + e.getMessage());
-                System.out.println("다른 방법으로 알림등 알려줄 예정");
+                // System.out.println("다른 방법으로 알림등 알려줄 예정");
+                System.out.println(e.getMessage());
                 return; // 현재 메소드 나가기
             }
         }
@@ -87,7 +97,8 @@ public class _5MemberService {
                 // JOptionPane.showMessageDialog(this, "파일 읽기 오류 : " + e.getMessage());
             
             // JOptionPane.showMessageDialog(this, "파일 생성 오류 : " + e.getMessage());
-            System.out.println("다른 방법으로 알림등 알려줄 예정");
+            // System.out.println("다른 방법으로 알림등 알려줄 예정");
+            System.out.println(e.getMessage());
             // TODO: handle exception
         }
     }
@@ -107,7 +118,8 @@ public class _5MemberService {
             }
         } catch (Exception e) {
                 // JOptionPane.showMessageDialog(this, "파일저장 오류"+ e.getMessage());
-            System.out.println("다른 방법으로 알림등 알려줄 예정");
+            // System.out.println("다른 방법으로 알림등 알려줄 예정");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -162,7 +174,8 @@ public class _5MemberService {
         // 검색된 결과가 없다면 알림창으로 알려주기.
         if (resultList.isEmpty()) {
                 // JOptionPane.showMessageDialog(this, "검색결과가 없습니다. ");
-            System.out.println("다른 방법으로 알림등 알려줄 예정");
+            // System.out.println("다른 방법으로 알림등 알려줄 예정");
+            signupFrame.showDialog("검색 결과가 없습니다.");
         }
     }
 
@@ -184,7 +197,8 @@ public class _5MemberService {
         refreshTable();
         // 10명의 더미 회원 추가 확인 다이얼로그창 띄우기.
             // JOptionPane.showMessageDialog(this, "10명의 더미 회원 추가!!");
-        System.out.println("다른 방법으로 알림등 알려줄 예정");
+        // System.out.println("다른 방법으로 알림등 알려줄 예정");
+        signupFrame.showDialog(" 더미회원 10명 추가");
         }
 
 

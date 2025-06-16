@@ -73,6 +73,7 @@ public class _4SignupFrame extends JFrame{
 
         // 추가
         service.setTableModel(tableModel);
+        service.setSignupFrame(this);
         
     memberTable = new JTable(tableModel); // 표 형태의 데이터(tableModel)를 => 화면출력용 테이블(memberTable)에 데이터연결.
     // 스크롤이 가능하게
@@ -269,6 +270,10 @@ public class _4SignupFrame extends JFrame{
 //         }
 //     }
 
+// 각 기능들 정의,
+    public void showDialog(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
 
 // // 6) 회원가입 입력폼 <- 다이얼로그 창으로 작업(자바)
     private void showAddDialog() {
@@ -318,6 +323,7 @@ public class _4SignupFrame extends JFrame{
                     Member member = new Member(name, password, email, regDate);
                         // members.add(member);
                     service.addMember(member);
+                    JOptionPane.showMessageDialog(this, "회원 가입 되었습니다.");
                         // saveMembersToFile();
                     service.saveMembersToFile();
                     service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
@@ -427,6 +433,8 @@ public class _4SignupFrame extends JFrame{
             service.refreshTable();
         }
     }
+
+    // Removed duplicate showDialog(String) method to resolve compilation error.
 
 
 // // 9) 더미데이터 추가하는 기능  <-- 굳이 화면에 보여줄 필요 X
