@@ -35,6 +35,9 @@ public class _4DBConnectionManager {
         return DriverManager.getConnection(url, user, password);
     }
     // getConnection() : 메서드는 데이터베이스 연결을 만들어서 넘김.
+        // JDBC 드라이버가 연결 세션을 만듦.
+        //  이 Connection을 통해서 PreparedStatement나 Statement를 만들고, 쿼리를 실행할 수 있음.
+
 
     // 4) 자원해제
     public static void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
@@ -42,7 +45,7 @@ public class _4DBConnectionManager {
             if(rs != null) rs.close();
             if(pstmt != null) pstmt.close();
             if(conn != null) conn.close();
-        } catch (Exception e) {
+        } catch (Exception e) { //ResultSet, PreparedStatement, Connection 을 하나 하나 확인해서 닫음.
             e.printStackTrace();
         }
     }

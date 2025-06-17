@@ -21,19 +21,21 @@ import d250617.web_structure.util.DateUtil;
 import javax.swing.*;
 
 public class _5MemberService {
-    // 파일 불러오는 경로를 전역으로 설정.
+// 여기서 _N1OracleMemberDAOImpl 클래스 : CRUD 기능
+// _4클래스 : 보이는창( 회원가입, 수정, 삭제 등 테이블표, 버튼, JText...)
+// _5클래스 : DB에서 불러오기, 전체 모든회원 조회, 검색기능, 
+// _9클래스 : 인터페이스 클래스
+// _N1Oralce 클래스 : DAO : 인터페이스를 구현한 클래스
+    // 회원관리 프로그램
+    // 회원추가, id, name, email, password, reg_date
+
 
     // 0617 순서1
-    // 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    // private static final String FILE_NAME = "member.txt"; // 회원 정보 저장 파일명, csv 형식
-
     // 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     // DB에서, 데이터 가져오기 준비,_N1OracleMemberDAOImpl(전체조회, 추가, 수정, 삭제, 검색 등 기능이 탑재)
     _9DAO_Interface dao = new _N1OracleMemberDAOImpl();
 
     // 0617 순서2
-    // 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    // 파일에서 불러온 멤버의 모든 정보를 담아둘 임시 공간 리스트
     // 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     // DB에서 불러온 멤버의 모든 정보를 담아둘 임시 공간 리스트
     private List<_10Member> members = new ArrayList<>();
