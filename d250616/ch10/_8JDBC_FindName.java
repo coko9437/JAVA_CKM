@@ -19,8 +19,8 @@ public class _8JDBC_FindName {
     try {
         conn = _4DBConnectionManager.getConnection();
 // 변경
-        String query = "SELECT * FROM MEMBER501 WHERE NAME LIKE ?";
-        pstmt = conn.prepareStatement(query);
+        String query = "SELECT * FROM MEMBER501 WHERE NAME LIKE ?"; //LIKE ?는 조건 값을 나중에 넣겠다는 의미
+        pstmt = conn.prepareStatement(query); //query 준비
             String searchKeyword = "이상용";
             pstmt.setString(1, "%" + searchKeyword + "%");
         // pstmt.setString(1, "%이상용%");

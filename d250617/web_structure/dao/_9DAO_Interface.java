@@ -36,14 +36,21 @@ public interface _9DAO_Interface {
         
         // 1) 전체조회
             List<_10Member> findAll();  //List부모타입 (ArrayList 자식타입) 다형성으로 받을 수 있음.
+
         // 2) 한명 조회
             _10Member findById(int id);
+            
+        
         // 3) 회원 추가
             boolean insert(_10Member member);
+
+
         // 4) 회원 수정
             boolean update(_10Member member);
+
         // 5) 회원 삭제
             boolean delete(_10Member member);
+            
         // 6) 회원 검색 
             _10Member findByName(String name);
 

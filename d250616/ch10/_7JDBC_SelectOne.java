@@ -27,9 +27,10 @@ public class _7JDBC_SelectOne {
         // int result = pstmt.executeUpdate();
             System.out.println("확인2, pstmt.executeQuery(query); 코드 전 ");
         rs = pstmt.executeQuery(); // 오류1 메서드에 쿼리를 넣은 부분
+                // executeQuery()는 인자가 없는 형태를 권장
             System.out.println("확인3, pstmt.executeQuery(query); 코드 후");
                 // 오류2 rs.next() 실행을 안해서
-         while(rs.next()) {
+         while(rs.next()) { //한 줄 한 줄 접근
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");

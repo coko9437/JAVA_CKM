@@ -142,7 +142,7 @@ public class _4SignupFrame extends JFrame{
         deleteBtn.addActionListener(e -> deleteSelectedMemberDialog());
         // 새로고침
         reloadBtn.addActionListener(e -> {
-            service.loadMembersFromFile();
+            // service.loadMembersFromFile();
             service.refreshTable();
         });
         // 검색
@@ -314,6 +314,7 @@ public class _4SignupFrame extends JFrame{
                 // 화면에서 입력창에 입력했던 데이터 들을 다 가지고와서
                 // 임의의 변수에 담고, Member 클래스 형식의 인스턴스를 만들고,
                 // 리스트 members 추가하고, 파일에 쓰기 작업.
+                
                 String name = nameField.getText().trim();
                 String email = emailField.getText().trim();
                 String password = passwordField.getText().trim();
@@ -325,12 +326,27 @@ public class _4SignupFrame extends JFrame{
                     }
                     
                     // 입력 끝. 인스턴스 생성하기
-                    _10Member member = new _10Member(result, name, email, password, regDate);
+// 변경전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+                    // _10Member member = new _10Member(result, name, email, password, regDate);
                         // members.add(member);
-                    service.addMember(member);
-                    JOptionPane.showMessageDialog(this, "회원 가입 되었습니다.");
-                        // saveMembersToFile();
-                    service.saveMembersToFile();
+                           
+                    // service.addMember(member);
+                    // JOptionPane.showMessageDialog(this, "회원 가입 되었습니다.");
+                    //     // saveMembersToFile();
+                    // service.saveMembersToFile();
+                    
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+                    // (1) 회원가입 화면에서 넘겨받은 데이터정보(GUI) -> member에 담기
+                        // 매개변수인 ID는 큰의미가없음 -> 디비에 넣을때 자동으로 생성되서.
+                    _10Member member = new _10Member(result, name, email, password, regDate);
+                    // (2) insert메서드 : 입력받은 회원정보인 member를 전달
+
+
+
+
+
+
+
                     service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
             }
         }
@@ -399,7 +415,7 @@ public class _4SignupFrame extends JFrame{
                     oldMember.setName(name);
                     oldMember.setEmail(email);
                     oldMember.setPassword(password);
-                    oldMember.setRegDate(regDate);
+                    // oldMember.setRegDate(regDate);
                     service.saveMembersToFile();
                     service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
             }

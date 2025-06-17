@@ -119,12 +119,13 @@ public class _2JDBC_Select {
                     //      String name = rs.getString("name");
                     //  }
 
-            rs = pstmt.executeQuery(query); // 실제 디비에 연결해서 실행결과를 받아옴.
+            rs = pstmt.executeQuery(); // 실제 디비에 연결해서 실행결과를 받아옴.
                 // executeQuery()는 PreparedStatement(pstmt) 에 미리 
+                    // executeQuery()는 인자가 없는 형태를 권장합니다.
                     // 준비되어 있는 쿼리를 실행
                     // 이 결과로 ResultSet(rs)이라는 형태의 데이터를 받음.
                     
-                while(rs.next()) {
+                while(rs.next()) { //rs.next()가 한 줄 한 줄 데이터를 넘깁니다.
                     int id = rs.getInt("id");
                     String name = rs.getString("name");
                     String email = rs.getString("email");

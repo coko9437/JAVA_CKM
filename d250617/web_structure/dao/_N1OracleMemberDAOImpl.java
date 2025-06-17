@@ -9,7 +9,7 @@ import java.util.List;
 
 import d250617.web_structure.dto._10Member;
 import d250617.web_structure.util._4DBConnectionManager;
-
+import d250617.web_structure.util.DateUtil;
 
 
 // 순서1
@@ -70,10 +70,90 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
         throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 
+
+
+
+
+
+
     @Override
     public boolean insert(_10Member member) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+        
+        try { 
+            conn = _4DBConnectionManager.getConnection();
+                // _4DBConnectionManager의 getConnection()이라는 유틸 메서드를 통해 데이터베이스 연결을 가져온 것입니다.
+            String query = "INSERT INTO MEMBER501 (ID,NAME,PASSWORD,EMAIL,REG_DATE)" +
+                    "VALUES(MEMBER501_SEQ.NEXTVAL,?,?,?,?)";
+            pstmt = conn.prepareStatement(query); //prepareStatement() : 쿼리 준비
+           
+                    // pstmt.setString(1, "이상용");
+                    // pstmt.setString(2, "1234");
+                    // pstmt.setString(3, "lsy@naver.com");
+                    // pstmt.setString(4, DateUtil.getCurrentDateTime());
+                    // System.out.println("5. PreparedStatement 생성 완료");
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getPassword());
+            pstmt.setString(3, member.getEmail());
+            pstmt.setString(4, DateUtil.getCurrentDateTime());
+            System.out.println("5. PreparedStatement 생성 완료");
+
+            int result = pstmt.executeUpdate(); // 실제로 디비에 쓰기 작업 진행.
+            System.out.println(result + " 개의 데이터가 저장됨");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            _4DBConnectionManager.close(null, pstmt, conn);
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        try {
+            conn = _4DBConnectionManager.getConnection();
+            String query = "INSERT INTO MEMBER501 (ID, NAME, PASSWORD, EMAIL, REG_DATE)" +
+                "VALUES(MEMBER501_SEQ.NEXTVAL, ?, ?, ?, ?)";
+                pstmt = conn.prepareStatement(query);
+                
+                pstmt.setString(1, member.getName());
+                pstmt.setString(2, member.getPassword());
+                pstmt.setString(3, member.getEmail());
+                pstmt.setString(4, DateUtil.getCurrentDateTime());
+            int result = pstmt.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            _4DBConnectionManager.close(null, pstmt, conn);
+        }
+        //  return memberList;
+        return false;
     }
 
     @Override

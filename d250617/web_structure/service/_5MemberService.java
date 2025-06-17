@@ -61,11 +61,23 @@ public class _5MemberService {
         return members;
     }
 
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     public void addMember(_10Member member) {
+       
         members.add(member);
         saveMembersToFile();
     }
-
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    public void addMemberDB(_10Member member) {
+        // 디비에 쓰는 기능 사용하기.
+        try {
+            
+        } catch (Exception e) {
+           System.out.println(e.getMessage());
+        }
+        // members.add(member);
+        // saveMembersToFile();
+    }
     // 0617 순서3, 해당 기능 수정.
     // 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     // 1) csv 파일에서 회원 목록 불러오기. loadMembersFromFile()
