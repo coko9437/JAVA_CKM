@@ -26,3 +26,6 @@ commit;
 select * from member501;
 SELECT * from member501 WHERE ID = 2;
 SELECT * from MEMBER501 WHERE NAME LIKE '%이상용';
+
+-- 전체조회, 아이디 기준으로 내림차순(최신등록일순)
+SELECT * FROM MEMBER501 ORDER BY ID DESC;

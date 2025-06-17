@@ -102,9 +102,9 @@ public class _2JDBC_Select {
 // 5. PreparedStatement 생성 
             // 요청할 SQL 문 을 데이터베이스에 전송할 때 사용하는 기능(API)
             // 예시) PreparedStatement pstmt = conn.prepareStatement(query)
-            pstmt = conn.prepareStatement(query);
+            pstmt = conn.prepareStatement(query); //prepareStatement() : 쿼리 준비
                 // 문자열로 저장한 query를 미리 준비(컴파일)해서 
-                    // PreparedStatement 객체(pstmt)를 만듬.
+                    // PreparedStatement 객체(pstmt)에 담아둠.
                  
 
 
