@@ -42,9 +42,8 @@ public class _7JDBC_SelectOne {
                 System.out.println("name : " +name);
                 System.out.println("email : " +email);
                 System.out.println("password2 : " +password2);
-                System.out.println("reg_date : " +reg_date);
-                    
-        } 
+                System.out.println("reg_date : " +reg_date);      
+        }
         
         
     } catch (Exception e) {

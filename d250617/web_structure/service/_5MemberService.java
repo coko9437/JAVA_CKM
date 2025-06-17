@@ -67,23 +67,38 @@ public class _5MemberService {
         members.add(member);
         saveMembersToFile();
     }
+
 // 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    public void addMemberDB(_10Member member) {
+    public void addMemberDB(_10Member member) { //DB에 입력하는 메소드()
         // 디비에 쓰는 기능 사용하기.
-        try {
-            
-        } catch (Exception e) {
-           System.out.println(e.getMessage());
-        }
+        
+            boolean result = dao.insert(member);
+                // System.out.println("회원가입완료");
         // members.add(member);
         // saveMembersToFile();
     }
+
+// 변경 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // 회원 수정시 한명의 회원정보를 가져오는 기능.
+    public _10Member getMemberOne(int member_id) {
+        _10Member member = dao.findById(member_id);
+        return member;
+    }
+// 변경 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    // 수정한 회원정보 디비에 반영하기.
+    public void updateMember(_10Member member) {
+        // 회원수정 디버깅2
+        System.out.println("_5MemberService회원수정데이터 확인");
+        System.out.println(member);
+        dao.update(member);
+    }
+
     // 0617 순서3, 해당 기능 수정.
     // 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     // 1) csv 파일에서 회원 목록 불러오기. loadMembersFromFile()
 
     // 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    // 디비에서 불러오기.
+    // 디비에서 불러오기. _9DAO_Interface dao = new _N1OracleMemberDAOImpl();
     public void loadMembersFromDB() {
         // 임시 , 멤버의 정보들을 담아두는 리스트,
         members.clear();// 모두 비우기.

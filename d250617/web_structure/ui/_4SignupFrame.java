@@ -340,12 +340,13 @@ public class _4SignupFrame extends JFrame{
                         // 매개변수인 ID는 큰의미가없음 -> 디비에 넣을때 자동으로 생성되서.
                     _10Member member = new _10Member(result, name, email, password, regDate);
                     // (2) insert메서드 : 입력받은 회원정보인 member를 전달
+                    service.addMemberDB(member);
 
+                        JOptionPane.showMessageDialog(this, "회원 가입 되었습니다.");
 
-
-
-
-
+// 변경 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+                    // 회원가입후 디비에서 변경된 데이터 다시 불러오기.
+                    service.loadMembersFromDB();
 
                     service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
             }
@@ -355,14 +356,38 @@ public class _4SignupFrame extends JFrame{
 // 7) 회원수정창
     private void showUpdateDialog() {
 
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // 테이블상에서 선택된 행의 번호를 가져와서 수정작업.
         int row = memberTable.getSelectedRow();
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // 테이블상에서 선택된 행이 아닌 실제 ID값 만 가져오려면
+        Object value = memberTable.getValueAt(row, 0);
+            System.out.println("클릭시 가져온 값 확인 테스트 : " + value);
+        // ㄴ 실제 멤버 ID를 Int로 변환해야함.
+        // 전역으로 사용할 변환된 ID를 따로 선언.
+        int member_id;
+        if (value instanceof Integer) {
+            int id = ((Integer)value).intValue(); //정수로 뽑아냄
+            System.out.println("선택된 ID 정수화 : " +id);
+        }
+        member_id = ((Integer) value).intValue();
         if (row == -1) { // 유효성체크
             JOptionPane.showMessageDialog(this, "수정 할 회원을 클릭하세요. ");
             return;
         }
+        
         // 전체회원 목록리스트에 해당회원 정보를 가져오기.
             // Member oldMember = members.get(row); 
-        _10Member oldMember = service.getMembers().get(row);
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // 단순 리스트에 등록된 순서로 데이터를 가져오고있음.
+        // _10Member oldMember = service.getMembers().get(row);
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // 실제 데이터에서, 해당 ID 번호로 회원의 정보를 가져오기.
+        // 한명의 회원정보를 가져오는 DAO 메서드가 필요함.
+        _10Member oldMember = service.getMemberOne(member_id);
+        
+            // 실제 멤버의 ID를 int타입으로 변환.
+
         // 이름, 이메일, 패스워드 입력창(한줄공간)
         // 가입시에, 새롭게 내용을 입력을했다면,
         // 기존 회원의 정보를 먼저 불러오고, 필요한 부분만 수정할 예정.
@@ -412,11 +437,30 @@ public class _4SignupFrame extends JFrame{
                     // 입력 끝. 인스턴스 생성하기
                     // Member member = new Member(name, password, email, regDate);
                     // members.add(member);
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ                    
+                    // oldMember.setName(name);
+                    // oldMember.setEmail(email);
+                    // oldMember.setPassword(password);
+                    // oldMember.setRegDate(regDate);
+                    // service.saveMembersToFile();
+                    // service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+                    // 화면에서 변경할 데이터를 멤버에담기.
                     oldMember.setName(name);
                     oldMember.setEmail(email);
                     oldMember.setPassword(password);
+
+                    // 회원수정 디버깅1
+                        // 디비에 수정 된 내용 반영하기전에 데이터 확인
+                        System.out.println("수정하기전 데이터 확인 : " +oldMember);
                     // oldMember.setRegDate(regDate);
-                    service.saveMembersToFile();
+                    // 수정하는 메서드에 변경할 멤버 객체 전달하기.
+                    service.updateMember(oldMember);
+
+                // 회원 수정후에 변경사항 반영
+                    // 회원 변경 후, 디비에서 변경된 데이터를 다시 불러오기.
+                    service.loadMembersFromDB();
+
                     service.refreshTable(); // 변경사항 새로고침 (다지우고 전체회원 다시채우기)
             }
 

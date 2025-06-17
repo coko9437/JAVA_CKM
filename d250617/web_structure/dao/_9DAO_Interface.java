@@ -42,6 +42,7 @@ public interface _9DAO_Interface {
             
         
         // 3) 회원 추가
+            // 화면에서 입력한 정보 -> member -> 디비 입력 -> true
             boolean insert(_10Member member);
 
 
@@ -50,7 +51,7 @@ public interface _9DAO_Interface {
 
         // 5) 회원 삭제
             boolean delete(_10Member member);
-            
+
         // 6) 회원 검색 
             _10Member findByName(String name);
 

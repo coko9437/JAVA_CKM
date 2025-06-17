@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import d250617.web_structure.ui._4SignupFrame;
 import d250617.web_structure.dto._10Member;
 import d250617.web_structure.util._4DBConnectionManager;
 import d250617.web_structure.util.DateUtil;
@@ -65,9 +66,41 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
     }
 
     @Override
-    public _10Member findById(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    public _10Member findById(int member_id) { 
+        // 넘어온 회원의 ID를 이용해 회원1명을 조회하는 작업.
+        _10Member member = new _10Member(); // 디비에서 조회한 1명의 회원 정보를 담을 객체
+        try { 
+            conn = _4DBConnectionManager.getConnection();
+                // _4DBConnectionManager의 getConnection()이라는 유틸 메서드를 통해 데이터베이스 연결을 가져온 것입니다.
+            String query = "SELECT * FROM MEMBER501 WHERE ID = ?";
+        pstmt = conn.prepareStatement(query);
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // pstmt.setInt(1, 2);
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        pstmt.setInt(1, member_id);
+            
+        rs = pstmt.executeQuery(); // 오류1 메서드에 쿼리를 넣은 부분
+                // executeQuery()는 인자가 없는 형태를 권장
+                
+         while(rs.next()) { //한 줄 한 줄 접근
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password2 = rs.getString("password");
+                String reg_date = rs.getString("reg_date");     
+                // member = new _10Member(id, name, email, password2, reg_date);
+                member.setId(member_id);
+                member.setName(name);
+                member.setEmail(email);
+                member.setPassword(password2);
+                member.setReg_date(reg_date);
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            _4DBConnectionManager.close(null, pstmt, conn);
+        }
+        return member;
     }
 
 
@@ -77,7 +110,7 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
 
 
     @Override
-    public boolean insert(_10Member member) {
+    public boolean insert(_10Member member) { // member : 화면으로 부터 입력 받은 회원 정보
         
         try { 
             conn = _4DBConnectionManager.getConnection();
@@ -95,7 +128,7 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
             pstmt.setString(2, member.getPassword());
             pstmt.setString(3, member.getEmail());
             pstmt.setString(4, DateUtil.getCurrentDateTime());
-            System.out.println("5. PreparedStatement 생성 완료");
+            // System.out.println("5. PreparedStatement 생성 완료");
 
             int result = pstmt.executeUpdate(); // 실제로 디비에 쓰기 작업 진행.
             System.out.println(result + " 개의 데이터가 저장됨");
@@ -109,57 +142,95 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        try {
-            conn = _4DBConnectionManager.getConnection();
-            String query = "INSERT INTO MEMBER501 (ID, NAME, PASSWORD, EMAIL, REG_DATE)" +
-                "VALUES(MEMBER501_SEQ.NEXTVAL, ?, ?, ?, ?)";
-                pstmt = conn.prepareStatement(query);
+        // 내가작성
+    //     try {
+    //         conn = _4DBConnectionManager.getConnection();
+    //         String query = "INSERT INTO MEMBER501 (ID, NAME, PASSWORD, EMAIL, REG_DATE)" +
+    //             "VALUES(MEMBER501_SEQ.NEXTVAL, ?, ?, ?, ?)";
+    //             pstmt = conn.prepareStatement(query);
                 
-                pstmt.setString(1, member.getName());
-                pstmt.setString(2, member.getPassword());
-                pstmt.setString(3, member.getEmail());
-                pstmt.setString(4, DateUtil.getCurrentDateTime());
-            int result = pstmt.executeUpdate();
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            _4DBConnectionManager.close(null, pstmt, conn);
-        }
-        //  return memberList;
-        return false;
-    }
+    //             pstmt.setString(1, member.getName());
+    //             pstmt.setString(2, member.getPassword());
+    //             pstmt.setString(3, member.getEmail());
+    //             pstmt.setString(4, DateUtil.getCurrentDateTime());
+    //         int result = pstmt.executeUpdate();
+    //         return true;
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     } finally {
+    //         _4DBConnectionManager.close(null, pstmt, conn);
+    //     }
+    //     //  return memberList;
+    //     return false;
+    // }
+        //
 
     @Override
     public boolean update(_10Member member) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        try {
+            // 회원수정 디버깅3
+            System.out.println("파일명 : _N1Oracle ");
+            System.out.println("넘어온 데이터 확인 ");
+            System.out.println(member);
+            conn = _4DBConnectionManager.getConnection();
+                // _4DBConnectionManager의 getConnection()이라는 유틸 메서드를 통해 데이터베이스 연결을 가져온 것입니다.
+            String query = "UPDATE MEMBER501 SET NAME = ?, EMAIL = ?, " +
+                    "PASSWORD = ?, REG_DATE = ? WHERE ID = ?";
+
+            
+            pstmt = conn.prepareStatement(query);
+// 변경 전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ            
+            // 수정 할 내용
+            // pstmt.setString(1, "이상용 수정");
+            // pstmt.setString(2, "1234 수정");
+            // pstmt.setString(3, "lsy@naver.com 수정");
+            // pstmt.setString(4, DateUtil.getCurrentDateTime());
+            // pstmt.setInt(5, 1);
+            
+// 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getPassword());
+            pstmt.setString(3, member.getEmail());
+            pstmt.setString(4, DateUtil.getCurrentDateTime());
+            // 주의사항) 멤버의 INDEX를 받아오기 1번이 아니고 member에서 id가져와서
+            // pstmt.setInt(5, 1);
+            pstmt.setInt(5, member.getId());
+
+            // 쓰기 버전,
+            // int result = pstmt.executeUpdate()
+            System.out.println("6. 전송 전 완료");
+            // 오류 업데이트 시에, 메서도 호출 방법이 다름.
+            // int result = pstmt.executeUpdate(query);
+            int result = pstmt.executeUpdate();
+            System.out.println("6-2. 전송 후 완료");
+            System.out.println(result + " 개의 데이터가 저장됨");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        } finally {
+            // 7. 자원 반납.
+            // 객체를 생성한 역순으로 반납.
+            // 1) Connection 2) PreparedStatement 3) ResultSet 객체를 순서로 만들었음.
+            // 해당 객체의 자원 반납 객체.close()
+            // try ~ resource 구문으로 , 자동으로 autocloseable 이용하거나,
+
+            // 변경전,
+            // try {
+            // // 조회 할 때만 필요
+            // // if (rs != null)
+            // // rs.close();
+            // if (pstmt != null)
+            // pstmt.close();
+            // if (conn != null)
+            // conn.close();
+            // } catch (Exception e) {
+            // // TODO: handle exception
+            // }
+
+            // 변경후,
+            _4DBConnectionManager.close(null, pstmt, conn);
+        }
+        return true;
     }
 
     @Override
