@@ -203,17 +203,13 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
             // int result = pstmt.executeUpdate(query);
             int result = pstmt.executeUpdate();
             System.out.println("6-2. 전송 후 완료");
-            System.out.println(result + " 개의 데이터가 저장됨");
+            System.out.println(result + " 개의 데이터가 수정됨.");
 
         } catch (Exception e) {
             // TODO: handle exception
         } finally {
-            // 7. 자원 반납.
-            // 객체를 생성한 역순으로 반납.
-            // 1) Connection 2) PreparedStatement 3) ResultSet 객체를 순서로 만들었음.
-            // 해당 객체의 자원 반납 객체.close()
-            // try ~ resource 구문으로 , 자동으로 autocloseable 이용하거나,
-
+            // 자원 반납.
+            
             // 변경전,
             // try {
             // // 조회 할 때만 필요
@@ -234,15 +230,60 @@ public class _N1OracleMemberDAOImpl implements _9DAO_Interface {
     }
 
     @Override
-    public boolean delete(_10Member member) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public boolean delete(int member_id) {
+                
+        try {
+            conn = _4DBConnectionManager.getConnection();
+                // _4DBCon클래스의 getConnection()이라는 유틸 메서드를 통해 데이터베이스 연결을 가져옴
+            String query = "DELETE FROM MEMBER501 WHERE ID = ?";
+                // 특정 조건(id)가 일치할 경우 해당 데이터를 삭제하게 됩니다.
+            pstmt = conn.prepareStatement(query); //PreparedStatement는 쿼리의 ?에 값을 넣고 한 후 실행할 수 있도록
+            pstmt.setInt(1, member_id); // query의 ? 값에 해당하는 숫자.
+            int result = pstmt.executeUpdate(); //executeUpdate()는 변경된 row 개수를 반환
+                 // 삭제됬다면 result는 1, 일치하는row가 없으면 0
+            System.out.println(result + " 개의 데이터가 삭제됨");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            _4DBConnectionManager.close(null, pstmt, conn);
+        } return true;
     }
 
     @Override
-    public _10Member findByName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
-    }
+    public List<_10Member> findByName(String searchName) {
+        // DB에서 검색된 회원을 -> _10Member 클래스에 담고 -> 리스트(searchMemberList)에 담기
+        
+        // 검색된 모델 회원들을 담을 임시 리스트 필요.
+        List<_10Member> searchMemberList = new ArrayList<>();
+        try {
+        conn = _4DBConnectionManager.getConnection();
+
+        String query = "SELECT * FROM MEMBER501 WHERE NAME LIKE ?"; //LIKE ?는 조건 값을 나중에 넣겠다는 의미
+        pstmt = conn.prepareStatement(query); //query 준비
+// 변경 기존은 하드코딩으로 임의로 값을 넣기 -> 동적으로 검색어를 전달 받아서, 키워드로 검색
+            // String searchKeyword = "이상용"; 
+            String searchKeyword = searchName;
+            pstmt.setString(1, "%" + searchKeyword + "%");
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String password2 = rs.getString("password");
+                String reg_date = rs.getString("reg_date");
+                // 1) 멤버에 담기
+                _10Member member = new _10Member(id, name, email, password2, reg_date);
+                // 2) 리스트(searchMemberList)에 담기
+                searchMemberList.add(member);
+            } 
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            _4DBConnectionManager.close(null, pstmt, conn);
+        } 
+        return searchMemberList;
+    }   
     
 }

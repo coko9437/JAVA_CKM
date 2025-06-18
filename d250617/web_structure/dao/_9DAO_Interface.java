@@ -50,9 +50,12 @@ public interface _9DAO_Interface {
             boolean update(_10Member member);
 
         // 5) 회원 삭제
-            boolean delete(_10Member member);
-
+            boolean delete(int id);
+            
         // 6) 회원 검색 
-            _10Member findByName(String name);
+            // _10Member findByName(String name);
+            // ㄴ 리턴을 한명의 인스턴스만 받음... 수정해야함
+// 0618 예시) 김철수가 3명 -> 3명다 검색되게
+            List<_10Member> findByName(String name);
 
 }

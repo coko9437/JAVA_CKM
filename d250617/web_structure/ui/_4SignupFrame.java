@@ -58,12 +58,16 @@ public class _4SignupFrame extends JFrame{
         String[] cols = {"아이디", "이름", "이메일", "패스워드", "가입일"};
         tableModel = new DefaultTableModel(cols,0) { // (헤더제목,0)== 빈테이블 생성
             public boolean isCellEditable(int row, int column) {
-            return false; // 각 테이블 셀 클릭시 값이 변경이 되는모드 (false -> 변경안되게함)
+            return false; // isCellEditable() : 각 테이블 셀 더블클릭시 값 변경할수있게... (false -> 변경안되게함)
             }
     };
 
         // 추가
         service.setTableModel(tableModel);
+        // 코드 분리를 하면서, 기능, 화면을 따로 분리, 자바 특성상, 클래스 그림을 그리기 위해서
+        // JFrame 필요함. 다이얼로그 알림창 이용을 하려면, 4번의 인스턴스를 서비스 클래스에 포함해서
+        // 이용함, -> 단, 억지로 화면을 나타내기 위해서 구현을 했지만, 추천하는 형태는 아님.
+
         service.setSignupFrame(this);
 
         // 표 형태의 데이터(tableModel)를 => 화면출력용 테이블(memberTable)에 데이터연결.
@@ -115,6 +119,7 @@ public class _4SignupFrame extends JFrame{
     // 파일에서 데이터 불러오고 , 테이블 표시, 메서드 호출
         // service.loadMembersFromFile();
     // 변경 후ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        // 디비에서 전체 데이터를 받고 -> 메모리에 멤버 리스트에 추가
         service.loadMembersFromDB();
         // 새로고침 기능 호출.
         service.refreshTable();
@@ -130,15 +135,18 @@ public class _4SignupFrame extends JFrame{
             service.refreshTable();
         });
         // 검색
-        searchBtn.addActionListener(e -> service.searchMembers());
+// 변경
+        // searchBtn.addActionListener(e -> service.searchMembers());
         // 검색 초기화
+        searchBtn.addActionListener(e -> service.searchMembersDB());
         resetBtn.addActionListener(e -> {
             searchField.setText("");
             service.refreshTable();
         });
         // 검색어에서, 엔터를 입력해도, 실행이 되게끔.
-        searchField.addActionListener(e -> service.searchMembers());
-
+// 변경
+        // searchField.addActionListener(e -> service.searchMembers());
+        searchBtn.addActionListener(e -> service.searchMembersDB());
         // 더미데이터 기능 추가 이벤트리스너 추가
         dummyBtn.addActionListener(e -> service.dummyMake());
 
@@ -353,6 +361,16 @@ public class _4SignupFrame extends JFrame{
             JOptionPane.showMessageDialog(this, "삭제 할 회원을 선택하세요.");
             return;
         }
+// 0618 추가작업... 기존 행번호 -> ID로 삭제하기
+        Object value = memberTable.getValueAt(row, 0);
+            System.out.println("삭제기능. 클릭시 가져온 값 확인 테스트 : " + value);
+        int member_id;
+        if (value instanceof Integer) {
+            member_id = ((Integer)value).intValue(); //정수로 뽑아냄
+                System.out.println("선택된 ID 정수화 : " +member_id);
+        }
+        member_id = ((Integer) value).intValue();
+            System.out.println("선택된 ID 정수화 2: " + member_id);
 
         // 회원 수정 확인 버튼 누를 경우, 확인 알림창 띄우기.
         // 확인 버튼 클릭 -> JOptionPane.showConfirmDialog() -> 특정 값을 반환.
@@ -369,34 +387,20 @@ public class _4SignupFrame extends JFrame{
         if (result == JOptionPane.YES_OPTION) {
             // 리스트에 해당 멤버 삭제,
             // members.remove(row);
-            service.getMembers().remove(row);
-            service.saveMembersToFile();
-            // 변경사항 새로고침, 즉 다 지우고, 전체 회원을 다시 그리기.
-            service.refreshTable();
+            // service.getMembers().remove(row);
+            // service.saveMembersToFile();
+            // // 변경사항 새로고침, 즉 다 지우고, 전체 회원을 다시 그리기.
+            // service.refreshTable();
+// 0618 추가작업... 기존 행번호 -> ID로 삭제하기
+            service.deleteMember(member_id);
+            // 회원 삭제 후, 디비에서 변경된 데이터를 다시 불러오기.
+            service.loadMembersFromDB();
+            // 새로고침
+            service.refreshTable();   
         }
     }
 
-    // Removed duplicate showDialog(String) method to resolve compilation error.
-
-
-// // 9) 더미데이터 추가하는 기능  <-- 굳이 화면에 보여줄 필요 X
-//     private void dummyMake() {
-//         // 반복문으로 더미 데이터 10개 정도 넣기.
-//         for (int i = 0; i < 10; i++) {
-//             Member dummyMember = new Member(
-//                     "더미회원" + (i + 1),
-//                     "password" + (i + 1),
-//                     "dummy" + (i + 1) + "@example.com",
-//                     DateUtil.getCurrentDateTime());
-//             members.add(dummyMember);
-//         }
-
-//         saveMembersToFile();
-//         // 변경사항 새로고침, 즉 다 지우고, 전체 회원을 다시 그리기.
-//         refreshTable();
-//         // 10명의 더미 회원 추가 확인 다이얼로그창 띄우기.
-//         JOptionPane.showMessageDialog(this, "10명의 더미 회원 추가!!");
-//         }
+    
 
 
 
